@@ -1,0 +1,19 @@
+server:
+  port: ${port:8001}
+
+spring:
+  application:
+    name: OrderService
+#  cloud:
+#    config:
+#      uri:
+
+#logging:
+#  file: /data/lrlz/log/orderservice.log
+#  level:
+#    com.lrlz.order: DEBUG
+#    org:
+#      springframework: WARN
+#      spring:
+#        springboot:
+#          dao: DEBUG

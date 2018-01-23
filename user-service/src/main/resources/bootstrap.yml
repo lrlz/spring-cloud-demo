@@ -1,0 +1,19 @@
+server:
+  port: ${port:8000}
+
+spring:
+  application:
+    name: UserService
+#  cloud:
+#    config:
+#      uri:
+
+#logging:
+#  file: /data/lrlz/log/userservice.log
+#  level:
+#    com.lrlz.userservice: DEBUG
+#    org:
+#      springframework: WARN
+#      spring:
+#        springboot:
+#          dao: DEBUG

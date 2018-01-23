@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: HystrixDashboardServer
+
+#logging:
+#  config: classpath:logback.xml

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 此处路径自己配置 -->
+	<classPathEntry location="D:\Apache\apache-maven\repository\mysql\mysql-connector-java\5.1.42\mysql-connector-java-5.1.42.jar" />
+	<context id="context1" targetRuntime="MyBatis3">
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.0.9:3306/order?characterEncoding=utf-8" userId="root" password="123" />
+		<!-- 此处是将Example改名为Criteria 当然 想改成什么都行 -->
+
+		<!--DTO的路径 -->
+		<javaModelGenerator targetPackage="com.lrlz.springcloud.orderservice.domain" targetProject="D:/workSpace/product/MicroClass/src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--生成SQL-XML的路径 -->
+		<sqlMapGenerator targetPackage="mapper.order" targetProject="D:/workSpace/product/MicroClass/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--DAO的路径 -->
+		<javaClientGenerator targetPackage="com.lrlz.springcloud.orderservice.dao" targetProject="D:/workSpace/product/MicroClass/src/main/java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<table tableName="tb_order" domainObjectName="Order">
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+	</context>
+</generatorConfiguration>

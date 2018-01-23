@@ -1,0 +1,114 @@
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.0.9:3306/order?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: root
+      password: 123
+      driverClassName: com.mysql.jdbc.Driver
+      initialSize: 10
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j
+
+#  redis:
+#    host: ${REDIS_HOST:192.168.0.128}
+#    port: ${REDIS_PORT:6379}
+#    password: ${REDIS_USERNAME:box123456}
+#    timeout: ${REDIS_PASSWORD:20000}
+#    database: ${REDIS_DATABASE:0}
+#  rabbitmq:
+#    host: ${RABBITMQ_HOST:}
+#    port: ${RABBITMQ_PORT:5672}
+#    username: ${RABBITMQ_USERNAME:rabbitmq}
+#    password: ${RABBITMQ_PASSWORD:rabbitmq}
+#    listener:
+#      concurrency: ${RABBITMQ_CONCURRENCY:1}
+#      max-concurrency: ${RABBITMQ_MAX_CONCURRENCY:2}
+#    virtual-host: ${RABBITMQ_VIRTUALHOST:/}
+#  freemarker.enabled: false
+#  http:
+#    multipart:
+#      max-file-size: 100Mb
+#      max-request-size: 30Mb
+#      resolve-lazily: false
+
+  zipkin:
+    base-url: http://localhost:9000
+  sleuth:
+    sampler:
+      percentage: 1.0
+management:
+  security.enabled: false
+  context-path: /
+eureka:
+  instance:
+    preferIpAddress: true
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+    appname: orcer-service
+#    status-page-url-path: /swagger-ui.html
+
+  client:
+    registryFetchIntervalSeconds: 5
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_ZONE:http://localhost:8761/eureka/}
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 10000
+  #  最大失败重试次数
+  MaxAutoRetries: 1
+  # 切换服务器 最多重试次数
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#    feign 启用容错模式
+feign:
+  hystrix:
+    enabled: true
+
+#flyway:
+#  baselineOnMigrate: false
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  typeAliasesPackage: com.lrlz.springcloud.orderservice.dao
+
+
+---
+spring:
+  profiles: production
+#修改jsp自动develop
+#jsp-servlet.init-parameters.development: false
+
+#logging:
+#  file: /data/lrlz/log/userservice.log
+#  level:
+#    com.lrlz.userservice: info
+#logging:
+#  config: classpath:logback.xml

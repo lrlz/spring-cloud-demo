@@ -1,0 +1,10 @@
+server:
+  port: ${port:9000}
+  use-forward-headers: true
+
+spring:
+  application:
+    name: ZipkinService
+#  cloud:
+#    config:
+#      uri:
