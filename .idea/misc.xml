@@ -21,9 +21,6 @@
     <service-url>https://repository.jboss.org/nexus/service/local/</service-url>
     <service-url>http://maven.aliyun.com/nexus/content/groups/public</service-url>
   </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="lrlz" />
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
