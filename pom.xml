@@ -22,6 +22,10 @@
         <module>commons</module>
         <module>hystrix-dashboard-server</module>
         <module>zipkin-server</module>
+        <module>monitor-server</module>
+        <module>order-service</module>
+        <module>turbine-server</module>
+        <module>application-gateway</module>
     </modules>
 
     <properties>
